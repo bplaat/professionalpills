@@ -12,7 +12,13 @@ class Trail extends Model
     protected $fillable = [
         'hospital_id',
         'name',
-        'description'
+        'description',
+        'limit',
+        'running'
+    ];
+
+    protected $casts = [
+        'running' => 'boolean'
     ];
 
     // A trail belongs to a hospital

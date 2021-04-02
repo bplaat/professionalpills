@@ -15,6 +15,8 @@ class TrailFactory extends Factory
         return [
             'name' => $this->faker->firstName . ' Trail',
             'description' => $this->faker->text(512),
+            'limit' => $this->faker->numberBetween(5, 10),
+            'running' => false
         ];
     }
 }

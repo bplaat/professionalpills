@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTrailsTable extends Migration
+class CreateHospitalUserTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,19 +13,22 @@ class CreateTrailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('trails', function (Blueprint $table) {
+        Schema::create('hospital_user', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('hospital_id');
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->unsignedInteger('limit');
-            $table->boolean('running');
+            $table->unsignedBigInteger('user_id');
+            $table->unsignedTinyInteger('role');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
             $table->foreign('hospital_id')
                 ->references('id')
                 ->on('hospitals')
+                ->onDelete('cascade');
+
+            $table->foreign('user_id')
+                ->references('id')
+                ->on('users')
                 ->onDelete('cascade');
         });
     }
@@ -37,6 +40,6 @@ class CreateTrailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('trails');
+        Schema::dropIfExists('hospital_user');
     }
 }
