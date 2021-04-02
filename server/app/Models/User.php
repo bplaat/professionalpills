@@ -49,7 +49,7 @@ class User extends Authenticatable
     ];
 
     // Get user full name (firstname insertion lastname)
-    public function name()
+    public function getNameAttribute()
     {
         if ($this->insertion != null) {
             return $this->firstname . ' ' . $this->insertion . ' ' . $this->lastname;

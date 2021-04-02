@@ -29,6 +29,7 @@
                                     <a class="navbar-link is-arrowless" href="{{ route('admin.home') }}">@lang('layout.header.admin.home')</a>
                                     <div class="navbar-dropdown">
                                         <a class="navbar-item" href="{{ route('admin.users.index') }}">@lang('layout.header.admin.users')</a>
+                                        <a class="navbar-item" href="{{ route('admin.hospitals.index') }}">@lang('layout.header.admin.hospitals')</a>
                                     </div>
                                 </div>
                             @endif
@@ -36,8 +37,8 @@
 
                         <div class="navbar-end">
                             <div class="navbar-item" style="display: flex; align-items: center;">
-                                <img style="border-radius: 50%; margin-right: 10px;" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?s=48&d=mp" alt="{{ Auth::user()->name() }}'s avatar">
-                                <span>{{ Auth::user()->name() }}</span>
+                                <img style="border-radius: 50%; margin-right: 10px;" src="https://www.gravatar.com/avatar/{{ md5(Auth::user()->email) }}?s=48&d=mp" alt="{{ Auth::user()->name }}'s avatar">
+                                <span>{{ Auth::user()->name }}</span>
                             </div>
                             <div class="navbar-item">
                                 <div class="buttons">

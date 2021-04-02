@@ -5,5 +5,6 @@ return [
     'title' => 'Admin',
     'breadcrumb' => 'Admin',
     'header' => 'The admin zone',
-    'users' => 'Users'
+    'users' => 'Users',
+    'hospitals' => 'Hospitals'
 ];

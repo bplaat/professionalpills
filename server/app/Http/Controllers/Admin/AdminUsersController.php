@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
-class AdminUsersController extends Controller
+class AdminHospitalsController extends Controller
 {
     // Admin users index route
     public function index()
@@ -78,7 +78,7 @@ class AdminUsersController extends Controller
     // Admin users edit route
     public function edit(User $user)
     {
-        return view('admin.users.edit', ['user' => $user, 'countries' => User::COUNTRIES]);
+        return view('admin.users.edit', ['user' => $user]);
     }
 
     // Admin users hijack route

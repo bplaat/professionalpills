@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Hospital;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -15,5 +16,7 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         User::factory(100)->create();
+
+        Hospital::factory(10)->create();
     }
 }
