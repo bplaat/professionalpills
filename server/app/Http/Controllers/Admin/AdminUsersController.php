@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
-class AdminHospitalsController extends Controller
+class AdminUsersController extends Controller
 {
     // Admin users index route
     public function index()

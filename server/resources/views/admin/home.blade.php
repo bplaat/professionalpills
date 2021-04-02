@@ -15,5 +15,6 @@
     <div class="buttons">
         <a class="button" href="{{ route('admin.users.index') }}">@lang('admin/home.users')</a>
         <a class="button" href="{{ route('admin.hospitals.index') }}">@lang('admin/home.hospitals')</a>
+        <a class="button" href="{{ route('admin.trails.index') }}">@lang('admin/home.trails')</a>
     </div>
 @endsection

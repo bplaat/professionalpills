@@ -14,7 +14,7 @@ class HospitalFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->firstName . ' Hospital',
+            'name' => $this->faker->company . ' Hospital',
             'address' => $this->faker->streetAddress,
             'postcode' => $this->faker->postcode,
             'city' => $this->faker->city,

@@ -17,6 +17,12 @@ class Hospital extends Model
         'country'
     ];
 
+    // A hospital has many trails
+    public function trails()
+    {
+        return $this->hasMany(Trail::class);
+    }
+
     // Search by a query
     public static function search($query)
     {

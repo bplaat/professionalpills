@@ -30,6 +30,7 @@
                                     <div class="navbar-dropdown">
                                         <a class="navbar-item" href="{{ route('admin.users.index') }}">@lang('layout.header.admin.users')</a>
                                         <a class="navbar-item" href="{{ route('admin.hospitals.index') }}">@lang('layout.header.admin.hospitals')</a>
+                                        <a class="navbar-item" href="{{ route('admin.trails.index') }}">@lang('layout.header.admin.trails')</a>
                                     </div>
                                 </div>
                             @endif

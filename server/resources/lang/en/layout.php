@@ -5,6 +5,7 @@ return [
     'header.admin.home' => 'Admin',
     'header.admin.users' => 'Users',
     'header.admin.hospitals' => 'Hospitals',
+    'header.admin.trails' => 'Trails',
     'header.settings' => 'Settings',
     'header.logout' => 'Logout',
     'header.login' => 'Login',
