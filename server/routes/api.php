@@ -9,6 +9,13 @@ use Illuminate\Support\Facades\Route;
 
 // %BUG: Lekker onbeveiligd zoals het hoort
 
+// API routes
+Route::get('', function () {
+    return [
+        'message' => 'ProfessionalPills API documentation: https://bit.ly/3kKfgzH'
+    ];
+})->name('api');
+
 // Hospital routes
 Route::get('hospitals', [ApiHospitalsController::class, 'index'])->name('api.hospitals.index');
 Route::get('hospitals/{hospital}', [ApiHospitalsController::class, 'show'])->name('api.hospitals.show');

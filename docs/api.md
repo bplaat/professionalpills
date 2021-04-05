@@ -1,5 +1,5 @@
 # The ProfessionalPills REST API 🔥
-[Go back](/README.md) to the home page
+[Go back](https://github.com/bplaat/professionalpills) to the home page if you want?
 
 This REST API is **very** secure I promise 😘...
 
@@ -15,13 +15,13 @@ This REST API is **very** secure I promise 😘...
 - GET `/api/hospitals/{hospital id}/trails`
 
     Get information about all the trails of a single hospital
-- GET `/api/hospitals/{hospital id}/trails{trail id}`
+- GET `/api/hospitals/{hospital id}/trails/{trail id}`
 
     Get information about a single trail of a single hospital
 - GET `/api/hospitals/{hospital id}/users`
 
     Get information about all the users of a single hospital
-- GET `/api/hospitals/{hospital id}/users{user id}`
+- GET `/api/hospitals/{hospital id}/users/{user id}`
 
     Get information about a single user of a single hospital
 
@@ -50,3 +50,5 @@ Just do a HTTP get request to a API endpoint and you get all the data in JSON ba
 You can search all index routes with the `q` GET variable.
 
 All index results all paged with a 20 limit boudary you can access the next page with the `page` GET variable.
+
+*THE END*
