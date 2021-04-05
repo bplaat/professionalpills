@@ -31,7 +31,7 @@ Route::middleware('auth')->group(function () {
 
     // Hospital user routes
     Route::post('/hospitals/{hospital}/users', [HospitalUsersController::class, 'store'])
-        ->name('hospitals.users.create')->middleware('can:create_hospital_user,hospital');
+        ->name('hospitals.users.store')->middleware('can:create_hospital_user,hospital');
     Route::post('/hospitals/{hospital}/users/{user}/update', [HospitalUsersController::class, 'update'])
         ->name('hospitals.users.update')->middleware('can:update_hospital_user,hospital');
     Route::get('/hospitals/{hospital}/users/{user}/delete', [HospitalUsersController::class, 'delete'])
