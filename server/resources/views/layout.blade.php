@@ -25,6 +25,34 @@
                 <div class="navbar-menu">
                     @auth
                         <div class="navbar-start">
+                            @php ($hospitals = App\Models\Hospital::all())
+                            @if ($hospitals->count() > 0)
+                                <div class="navbar-item has-dropdown is-hoverable">
+                                    <a class="navbar-link is-arrowless" href="{{ route('hospitals.index') }}">@lang('layout.header.hospitals')</a>
+                                    <div class="navbar-dropdown">
+                                        @foreach ($hospitals->sortBy('name', SORT_NATURAL | SORT_FLAG_CASE)->take(10) as $hospital)
+                                            <a class="navbar-item" href="{{ route('hospitals.show', $hospital) }}">{{ $hospital->name }}</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @else
+                                <a class="navbar-item" href="{{ route('hospitals.index') }}">@lang('layout.header.hospitals')</a>
+                            @endif
+
+                            @php ($trails = App\Models\Trail::all())
+                            @if ($trails->count() > 0)
+                                <div class="navbar-item has-dropdown is-hoverable">
+                                    <a class="navbar-link is-arrowless" href="{{ route('trails.index') }}">@lang('layout.header.trails')</a>
+                                    <div class="navbar-dropdown">
+                                        @foreach ($trails->sortBy('name', SORT_NATURAL | SORT_FLAG_CASE)->take(10) as $trail)
+                                            <a class="navbar-item" href="{{ route('trails.show', $trail) }}">{{ $trail->name }}</a>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            @else
+                                <a class="navbar-item" href="{{ route('trails.index') }}">@lang('layout.header.trails')</a>
+                            @endif
+
                             @if (Auth::user()->role == App\Models\User::ROLE_ADMIN)
                                 <div class="navbar-item has-dropdown is-hoverable">
                                     <a class="navbar-link is-arrowless" href="{{ route('admin.home') }}">@lang('layout.header.admin.home')</a>

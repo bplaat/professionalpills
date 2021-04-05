@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\HospitalsController;
+use App\Http\Controllers\HospitalUsersController;
 use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\TrailsController;
+use App\Http\Controllers\TrailUsersController;
 use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\AdminHospitalsController;
 use App\Http\Controllers\Admin\AdminHospitalUsersController;
@@ -15,6 +19,44 @@ Route::view('/', 'home')->name('home');
 
 // Normal routes
 Route::middleware('auth')->group(function () {
+    // Hospital routes
+    Route::get('/hospitals', [HospitalsController::class, 'index'])->name('hospitals.index');
+    Route::get('/hospitals/{hospital}/edit', [HospitalsController::class, 'edit'])
+        ->name('hospitals.edit')->middleware('can:update,hospital');
+    Route::get('/hospitals/{hospital}/delete', [HospitalsController::class, 'delete'])
+        ->name('hospitals.delete')->middleware('can:delete,hospital');
+    Route::get('/hospitals/{hospital}', [HospitalsController::class, 'show'])->name('hospitals.show');
+    Route::post('/hospitals/{hospital}', [HospitalsController::class, 'update'])
+        ->name('hospitals.update')->middleware('can:update,hospital');
+
+    // Hospital user routes
+    Route::post('/hospitals/{hospital}/users', [HospitalUsersController::class, 'store'])
+        ->name('hospitals.users.create')->middleware('can:create_hospital_user,hospital');
+    Route::post('/hospitals/{hospital}/users/{user}/update', [HospitalUsersController::class, 'update'])
+        ->name('hospitals.users.update')->middleware('can:update_hospital_user,hospital');
+    Route::get('/hospitals/{hospital}/users/{user}/delete', [HospitalUsersController::class, 'delete'])
+        ->name('hospitals.users.delete')->middleware('can:delete_hospital_user,hospital');
+
+    // Trail routes
+    Route::get('/trails', [TrailsController::class, 'index'])->name('trails.index');
+    Route::view('/trails/create', 'trails.create')->name('trails.create');
+    Route::post('/trails', [TrailsController::class, 'store'])->name('trails.store');
+    Route::get('/trails/{trail}/run', [TrailsController::class, 'run'])
+        ->name('trails.run')->middleware('can:run,trail');
+    Route::get('/trails/{trail}/edit', [TrailsController::class, 'edit'])
+        ->name('trails.edit')->middleware('can:update,trail');
+    Route::get('/trails/{trail}/delete', [TrailsController::class, 'delete'])
+        ->name('trails.delete')->middleware('can:delete,trail');
+    Route::get('/trails/{trail}', [TrailsController::class, 'show'])->name('trails.show');
+    Route::post('/trails/{trail}', [TrailsController::class, 'update'])
+        ->name('trails.update')->middleware('can:update,trail');
+
+    // Trail user routes
+    Route::post('/trails/{trail}/users', [TrailUsersController::class, 'store'])
+        ->name('trails.users.create')->middleware('can:create_trail_user,trail');
+    Route::get('/trails/{trail}/users/{user}/delete', [TrailUsersController::class, 'delete'])
+        ->name('trails.users.delete')->middleware('can:delete_trail_user,trail');
+
     // Settings routes
     Route::view('/settings', 'settings')->name('settings');
     Route::post('/settings/change_details', [SettingsController::class, 'changeDetails'])->name('settings.change_details');
@@ -66,7 +108,6 @@ Route::middleware('admin')->group(function () {
     // Admin trail user routes
     Route::post('/admin/trails/{trail}/users', [AdminTrailUsersController::class, 'store'])->name('admin.trails.users.create');
     Route::get('/admin/trails/{trail}/users/{user}/delete', [AdminTrailUsersController::class, 'delete'])->name('admin.trails.users.delete');
-
 });
 
 // Guest routes

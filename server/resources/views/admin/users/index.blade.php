@@ -52,7 +52,7 @@
                                 @endif
                             </h2>
 
-                            <p><a class="tag" href="mailto:{{ $user->email }}">{{ $user->email }}</a></p>
+                            <p><a class="tag is-light" href="mailto:{{ $user->email }}">{{ $user->email }}</a></p>
                         </div>
                     </div>
                 @endforeach

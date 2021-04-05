@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Models\Hospital;
 use App\Models\Trail;
 use App\Models\User;
@@ -11,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
-class AdminTrailsController extends Controller
+class TrailsController extends Controller
 {
-    // Admin trails index route
+    // Trails index route
     public function index()
     {
         // When a query is given search by query
@@ -26,21 +25,11 @@ class AdminTrailsController extends Controller
         $trails = $trails->sortBy('name', SORT_NATURAL | SORT_FLAG_CASE)
             ->sortByDesc('running')->paginate(config('pagination.web.limit'))->withQueryString();
 
-        // Return admin trails index view
-        return view('admin.trails.index', ['trails' => $trails]);
+        // Return trails index view
+        return view('trails.index', ['trails' => $trails]);
     }
 
-    // Admin trails create route
-    public function create(Trail $trail)
-    {
-        // Get all the hospitals
-        $hospitals = Hospital::all();
-
-        // Return admin trails create view
-        return view('admin.trails.create', ['hospitals' => $hospitals]);
-    }
-
-    // Admin trails store route
+    // Trails store route
     public function store(Request $request)
     {
         // Validate input
@@ -60,11 +49,11 @@ class AdminTrailsController extends Controller
             'running' => false
         ]);
 
-        // Go to the new admin trail show page
-        return redirect()->route('admin.trails.show', $trail);
+        // Go to the new trail show page
+        return redirect()->route('trails.show', $trail);
     }
 
-    // Admin trails show route
+    // Trails show route
     public function show(Trail $trail)
     {
         // Select trail information
@@ -72,8 +61,8 @@ class AdminTrailsController extends Controller
             ->sortByDesc('pivot.enrolled')->paginate(config('pagination.web.limit'))->withQueryString();
         $users = User::all()->sortBy(User::sortByName(), SORT_NATURAL | SORT_FLAG_CASE);
 
-        // Return admin trail show view
-        return view('admin.trails.show', [
+        // Return trail show view
+        return view('trails.show', [
             'trail' => $trail,
 
             'trailUsers' => $trailUsers,
@@ -81,7 +70,7 @@ class AdminTrailsController extends Controller
         ]);
     }
 
-    // Admin trails run route
+    // Trails run route
     public function run(Trail $trail)
     {
         // Update trail
@@ -104,21 +93,17 @@ class AdminTrailsController extends Controller
             $i++;
         }
 
-        // Go to the admin trail show page
-        return redirect()->route('admin.trails.show', $trail);
+        // Go to the trail show page
+        return redirect()->route('trails.show', $trail);
     }
 
-    // Admin trails edit route
+    // Trails edit route
     public function edit(Trail $trail)
     {
-        // Get all the hospitals
-        $hospitals = Hospital::all();
-
-        // Return admin trails edit view
-        return view('admin.trails.edit', ['trail' => $trail, 'hospitals' => $hospitals]);
+        return view('trails.edit', ['trail' => $trail]);
     }
 
-    // Admin trails update route
+    // Trails update route
     public function update(Request $request, Trail $trail)
     {
         // Validate input
@@ -137,17 +122,17 @@ class AdminTrailsController extends Controller
             'limit' => $fields['limit']
         ]);
 
-        // Go to the admin trail show page
-        return redirect()->route('admin.trails.show', $trail);
+        // Go to the trail show page
+        return redirect()->route('trails.show', $trail);
     }
 
-    // Admin trails delete route
+    // Trails delete route
     public function delete(Trail $trail)
     {
         // Delete trail
         $trail->delete();
 
         // Go to the trails index page
-        return redirect()->route('admin.trails.index');
+        return redirect()->route('trails.index');
     }
 }
