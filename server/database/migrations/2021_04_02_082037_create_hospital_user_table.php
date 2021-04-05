@@ -21,6 +21,8 @@ class CreateHospitalUserTable extends Migration
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
 
+            $table->unique([ 'hospital_id', 'user_id' ]);
+
             $table->foreign('hospital_id')
                 ->references('id')
                 ->on('hospitals')

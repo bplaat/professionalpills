@@ -5,7 +5,6 @@ namespace Database\Factories;
 use App\Models\Hospital;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Facades\Hash;
 
 class HospitalFactory extends Factory
 {

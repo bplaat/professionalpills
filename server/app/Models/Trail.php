@@ -27,6 +27,12 @@ class Trail extends Model
         return $this->belongsTo(Hospital::class);
     }
 
+    // A trail belongs to many users
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     // Search by a query
     public static function search($query)
     {

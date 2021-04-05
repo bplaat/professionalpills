@@ -18,9 +18,10 @@ class CreateTrailUserTable extends Migration
             $table->unsignedBigInteger('trail_id');
             $table->unsignedBigInteger('user_id');
             $table->boolean('enrolled');
-            $table->unsignedInteger('place');
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
+
+            $table->unique([ 'trail_id', 'user_id' ]);
 
             $table->foreign('trail_id')
                 ->references('id')

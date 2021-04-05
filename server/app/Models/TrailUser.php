@@ -11,8 +11,7 @@ class TrailUser extends Model
     protected $fillable = [
         'trail_id',
         'user_id',
-        'enrolled',
-        'place'
+        'enrolled'
     ];
 
     protected $casts = [

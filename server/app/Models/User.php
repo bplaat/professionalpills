@@ -48,6 +48,18 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // A user belongs to many hospitals
+    public function hospitals()
+    {
+        return $this->belongsToMany(Hospital::class);
+    }
+
+    // A user belongs to many trails
+    public function trails()
+    {
+        return $this->belongsToMany(Trail::class);
+    }
+
     // Get user full name (firstname insertion lastname)
     public function getNameAttribute()
     {

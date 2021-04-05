@@ -17,6 +17,12 @@ class Hospital extends Model
         'country'
     ];
 
+    // A hospital belongs to many users
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
+
     // A hospital has many trails
     public function trails()
     {
