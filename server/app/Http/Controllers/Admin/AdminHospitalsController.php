@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Hospital;
+use App\Models\HospitalUser;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -56,7 +58,18 @@ class AdminHospitalsController extends Controller
     // Admin hospitals show route
     public function show(Hospital $hospital)
     {
-        return view('admin.hospitals.show', [ 'hospital' => $hospital ]);
+        // Select profile information
+        $hospitalUsers = $hospital->users->sortBy(User::sortByName(), SORT_NATURAL | SORT_FLAG_CASE)
+            ->sortByDesc('pivot.role')->paginate(config('pagination.web.limit'))->withQueryString();
+        $users = User::all()->sortBy(User::sortByName(), SORT_NATURAL | SORT_FLAG_CASE);
+
+        // Return admin hospital show view
+        return view('admin.hospitals.show', [
+            'hospital' => $hospital,
+
+            'hospitalUsers' => $hospitalUsers,
+            'users' => $users
+        ]);
     }
 
     // Admin hospitals edit route

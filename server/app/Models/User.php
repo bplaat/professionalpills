@@ -51,13 +51,13 @@ class User extends Authenticatable
     // A user belongs to many hospitals
     public function hospitals()
     {
-        return $this->belongsToMany(Hospital::class);
+        return $this->belongsToMany(Hospital::class)->withPivot('role');
     }
 
     // A user belongs to many trails
     public function trails()
     {
-        return $this->belongsToMany(Trail::class);
+        return $this->belongsToMany(Trail::class)->withPivot('enrolled');
     }
 
     // Get user full name (firstname insertion lastname)

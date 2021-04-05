@@ -30,7 +30,7 @@ class Trail extends Model
     // A trail belongs to many users
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('enrolled');
     }
 
     // Search by a query

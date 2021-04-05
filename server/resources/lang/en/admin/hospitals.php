@@ -27,6 +27,23 @@ return [
     'show.edit' => 'Edit hospital',
     'show.delete' => 'Delete hospital',
 
+    'show.users' => 'Hospital Users',
+    'show.users_role_driver' => 'DRIVER',
+    'show.users_role_nurse' => 'NURSE',
+    'show.users_role_doctor' => 'DOCTER',
+    'show.users_role_researcher' => 'RESEARCHER',
+    'show.users_role_it' => 'IT',
+    'show.users_remove_button' => 'Remove user',
+    'show.users_empty' => 'This hospital has no assigned users',
+    'show.users_field' => 'Select a user...',
+    'show.users_role_field_driver' => 'As driver',
+    'show.users_role_field_nurse' => 'As nurse',
+    'show.users_role_field_doctor' => 'As doctor',
+    'show.users_role_field_researcher' => 'As reacher',
+    'show.users_role_field_it' => 'As IT',
+    'show.users_edit_button' => 'Edit user',
+    'show.users_add_button' => 'Add user',
+
     // Admin hospitals edit page
     'edit.title' => 'Edit - :hospital.name - Hospitals - Admin',
     'edit.breadcrumb' => 'Edit',

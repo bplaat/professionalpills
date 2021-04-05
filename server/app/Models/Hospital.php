@@ -20,7 +20,7 @@ class Hospital extends Model
     // A hospital belongs to many users
     public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->withPivot('role');
     }
 
     // A hospital has many trails
