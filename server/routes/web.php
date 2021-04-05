@@ -6,6 +6,7 @@ use App\Http\Controllers\Admin\AdminUsersController;
 use App\Http\Controllers\Admin\AdminHospitalsController;
 use App\Http\Controllers\Admin\AdminHospitalUsersController;
 use App\Http\Controllers\Admin\AdminTrailsController;
+use App\Http\Controllers\Admin\AdminTrailUsersController;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -61,6 +62,11 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/trails/{trail}/delete', [AdminTrailsController::class, 'delete'])->name('admin.trails.delete');
     Route::get('/admin/trails/{trail}', [AdminTrailsController::class, 'show'])->name('admin.trails.show');
     Route::post('/admin/trails/{trail}', [AdminTrailsController::class, 'update'])->name('admin.trails.update');
+
+    // Admin trail user routes
+    Route::post('/admin/trails/{trail}/users', [AdminTrailUsersController::class, 'store'])->name('admin.trails.users.create');
+    Route::get('/admin/trails/{trail}/users/{user}/delete', [AdminTrailUsersController::class, 'delete'])->name('admin.trails.users.delete');
+
 });
 
 // Guest routes

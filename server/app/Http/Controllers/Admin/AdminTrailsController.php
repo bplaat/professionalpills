@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Hospital;
 use App\Models\Trail;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -66,7 +67,18 @@ class AdminTrailsController extends Controller
     // Admin trails show route
     public function show(Trail $trail)
     {
-        return view('admin.trails.show', [ 'trail' => $trail ]);
+        // Select trail information
+        $trailUsers = $trail->users->sortBy(User::sortByName(), SORT_NATURAL | SORT_FLAG_CASE)
+            ->sortByDesc('pivot.enrolled')->paginate(config('pagination.web.limit'))->withQueryString();
+        $users = User::all()->sortBy(User::sortByName(), SORT_NATURAL | SORT_FLAG_CASE);
+
+        // Return admin trail show view
+        return view('admin.trails.show', [
+            'trail' => $trail,
+
+            'trailUsers' => $trailUsers,
+            'users' => $users
+        ]);
     }
 
     // Admin trails run route
@@ -76,6 +88,21 @@ class AdminTrailsController extends Controller
         $trail->update([
             'running' => true
         ]);
+
+        // enrol users until limit
+        $i = 0;
+        $enrolled = true;
+        foreach ($trail->users as $user) {
+            if ($i == $trail->limit) {
+                $enrolled = false;
+            }
+
+            $trail->users()->updateExistingPivot($user, [
+                'enrolled' => $enrolled
+            ]);
+
+            $i++;
+        }
 
         // Go to the admin trail show page
         return redirect()->route('admin.trails.show', $trail);
@@ -107,8 +134,7 @@ class AdminTrailsController extends Controller
             'hospital_id' => $fields['hospital_id'],
             'name' => $fields['name'],
             'description' => $fields['description'],
-            'limit' => $fields['limit'],
-            'running' => false
+            'limit' => $fields['limit']
         ]);
 
         // Go to the admin trail show page

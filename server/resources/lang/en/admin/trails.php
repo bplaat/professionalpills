@@ -30,6 +30,16 @@ return [
     'show.edit' => 'Edit trail',
     'show.delete' => 'Delete trail',
 
+    'show.users' => 'Trail Users',
+    'show.users_enough' => 'Enough space to be enrolled',
+    'show.users_place' => 'Place in line:',
+    'show.users_enrolled' => 'ENROLLED',
+    'show.users_waiting' => 'WAITING',
+    'show.users_remove_button' => 'Remove user',
+    'show.users_empty' => 'This trail has no assigned users',
+    'show.users_field' => 'Select a user...',
+    'show.users_add_button' => 'Add user',
+
     // Admin trails edit page
     'edit.title' => 'Edit - :trail.name - Trails - Admin',
     'edit.breadcrumb' => 'Edit',
