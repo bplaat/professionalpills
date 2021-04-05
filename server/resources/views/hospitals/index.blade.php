@@ -14,7 +14,9 @@
         <h1 class="title">@lang('hospitals.index.header')</h1>
 
         <div class="columns">
-            <div class="column"></div>
+            <div class="column">
+                <p>@lang('hospitals.index.description')</p>
+            </div>
 
             <form class="column" method="GET">
                 <div class="field has-addons">

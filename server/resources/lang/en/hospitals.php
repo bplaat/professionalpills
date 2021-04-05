@@ -5,6 +5,7 @@ return [
     'index.title' => 'Hospitals',
     'index.breadcrumb' => 'Hospitals',
     'index.header' => 'All the hospitals',
+    'index.description' => 'These are all hospitals that participate in the trails:',
     'index.search_field' => 'Search for hospitals...',
     'index.search_button' => 'Search',
     'index.empty' => 'There are no hospitals found',

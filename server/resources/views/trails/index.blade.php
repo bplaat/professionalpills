@@ -15,11 +15,12 @@
 
         <div class="columns">
             <div class="column">
-                <!-- %BUG -->
                 @if (App\Models\HospitalUser::where('user_id', Auth::id())->where('role', '>=', App\Models\HospitalUser::ROLE_RESEARCHER)->count() > 0)
                     <div class="buttons">
                         <a class="button is-link" href="{{ route('trails.create') }}">@lang('trails.index.create')</a>
                     </div>
+                @else
+                    <p>@lang('trails.index.description')</p>
                 @endif
             </div>
 

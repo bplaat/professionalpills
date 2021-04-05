@@ -5,6 +5,7 @@ return [
     'index.title' => 'Trails',
     'index.breadcrumb' => 'Trails',
     'index.header' => 'All the trails',
+    'index.description' => 'These are all the trails, you can join not running trails:',
     'index.search_field' => 'Search for trails...',
     'index.search_button' => 'Search',
     'index.running' => 'RUNNING',

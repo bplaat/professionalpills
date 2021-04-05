@@ -58,13 +58,11 @@
             <p><i>@lang('hospitals.show.trails_empty')</i></p>
         @endif
 
-        <!-- %UGLY -->
-        @php($hospitalUser = App\Models\HospitalUser::where('hospital_id', $hospital->id)->where('user_id', Auth::id()))
-        @if ($hospitalUser->count() == 1 && $hospitalUser->first()->role >= App\Models\HospitalUser::ROLE_RESEARCHER)
+        @can('create', [App\Models\Trail::class, $hospital])
             <div class="buttons">
                 <a class="button is-link" href="{{ route('trails.create') }}?hospital_id={{ $hospital->id }}">@lang('hospitals.show.trails_create')</a>
             </div>
-        @endif
+        @endcan
     </div>
 
     <!-- Hospital users -->

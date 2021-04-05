@@ -23,7 +23,7 @@ class TrailsController extends Controller
             $trails = Trail::all();
         }
         $trails = $trails->sortBy('name', SORT_NATURAL | SORT_FLAG_CASE)
-            ->sortByDesc('running')->paginate(config('pagination.web.limit'))->withQueryString();
+            ->sortBy('running')->paginate(config('pagination.web.limit'))->withQueryString();
 
         // Return trails index view
         return view('trails.index', ['trails' => $trails]);
