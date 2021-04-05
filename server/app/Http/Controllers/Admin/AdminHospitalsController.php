@@ -58,7 +58,10 @@ class AdminHospitalsController extends Controller
     // Admin hospitals show route
     public function show(Hospital $hospital)
     {
-        // Select profile information
+        // Select hospital information
+        $hospitalTrails = $hospital->trails->sortBy('name', SORT_NATURAL | SORT_FLAG_CASE)
+            ->sortByDesc('running')->paginate(config('pagination.web.limit'))->withQueryString();
+
         $hospitalUsers = $hospital->users->sortBy(User::sortByName(), SORT_NATURAL | SORT_FLAG_CASE)
             ->sortByDesc('pivot.role')->paginate(config('pagination.web.limit'))->withQueryString();
         $users = User::all()->sortBy(User::sortByName(), SORT_NATURAL | SORT_FLAG_CASE);
@@ -66,6 +69,8 @@ class AdminHospitalsController extends Controller
         // Return admin hospital show view
         return view('admin.hospitals.show', [
             'hospital' => $hospital,
+
+            'hospitalTrails' => $hospitalTrails,
 
             'hospitalUsers' => $hospitalUsers,
             'users' => $users

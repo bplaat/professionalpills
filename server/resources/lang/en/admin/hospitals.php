@@ -27,6 +27,11 @@ return [
     'show.edit' => 'Edit hospital',
     'show.delete' => 'Delete hospital',
 
+    'show.trails' => 'Hospital Trails',
+    'show.trails_running' => 'RUNNING',
+    'show.trails_empty' => 'This hospital has no assigned trails',
+    'show.trails_create' => 'Create new trail',
+
     'show.users' => 'Hospital Users',
     'show.users_role_driver' => 'DRIVER',
     'show.users_role_nurse' => 'NURSE',

@@ -25,6 +25,39 @@
         </div>
     </div>
 
+    <!-- Hospital trails -->
+    <div class="box content">
+        <h2 class="title is-4">@lang('admin/hospitals.show.trails')</h2>
+
+        @if ($hospitalTrails->count() > 0)
+            {{ $hospitalTrails->links() }}
+
+            <div class="columns is-multiline">
+                @foreach ($hospitalTrails as $trail)
+                    <div class="column is-one-third">
+                        <div class="box content" style="height: 100%">
+                            <h2 class="title is-4">
+                                <a href="{{ route('admin.trails.show', $trail) }}">{{ $trail->name }}</a>
+
+                                @if ($trail->running)
+                                    <span class="tag is-pulled-right is-success">@lang('admin/hospitals.show.trails_running')</span>
+                                @endif
+                            </h2>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
+
+            {{ $hospitalTrails->links() }}
+        @else
+            <p><i>@lang('admin/hospitals.show.trails_empty')</i></p>
+        @endif
+
+        <div class="buttons">
+            <a class="button is-link" href="{{ route('admin.trails.create') }}?hospital_id={{ $hospital->id }}">@lang('admin/hospitals.show.trails_create')</a>
+        </div>
+    </div>
+
     <!-- Hospital users -->
     <div class="box content">
         <h2 class="title is-4">@lang('admin/hospitals.show.users')</h2>
