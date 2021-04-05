@@ -46,14 +46,17 @@ class AdminTrailsController extends Controller
         $fields = $request->validate([
             'hospital_id' => 'required|integer|exists:hospitals,id',
             'name' => 'required|min:2|max:48',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'limit' => 'required|integer|min:1|max:1000'
         ]);
 
         // Create trail
         $trail = Trail::create([
             'hospital_id' => $fields['hospital_id'],
             'name' => $fields['name'],
-            'description' => $fields['description']
+            'description' => $fields['description'],
+            'limit' => $fields['limit'],
+            'running' => false
         ]);
 
         // Go to the new admin trail show page
@@ -64,6 +67,18 @@ class AdminTrailsController extends Controller
     public function show(Trail $trail)
     {
         return view('admin.trails.show', [ 'trail' => $trail ]);
+    }
+
+    // Admin trails run route
+    public function run(Trail $trail)
+    {
+        // Update trail
+        $trail->update([
+            'running' => true
+        ]);
+
+        // Go to the admin trail show page
+        return redirect()->route('admin.trails.show', $trail);
     }
 
     // Admin trails edit route
@@ -83,14 +98,17 @@ class AdminTrailsController extends Controller
         $fields = $request->validate([
             'hospital_id' => 'required|integer|exists:hospitals,id',
             'name' => 'required|min:2|max:48',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'limit' => 'required|integer|min:1|max:1000'
         ]);
 
         // Update trail
         $trail->update([
             'hospital_id' => $fields['hospital_id'],
             'name' => $fields['name'],
-            'description' => $fields['description']
+            'description' => $fields['description'],
+            'limit' => $fields['limit'],
+            'running' => false
         ]);
 
         // Go to the admin trail show page

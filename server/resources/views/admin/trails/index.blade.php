@@ -42,6 +42,10 @@
                         <div class="box content" style="height: 100%">
                             <h2 class="title is-4">
                                 <a href="{{ route('admin.trails.show', $trail) }}">{{ $trail->name }}</a>
+
+                                @if ($trail->running)
+                                    <span class="tag is-pulled-right is-success">@lang('admin/trails.index.running')</span>
+                                @endif
                             </h2>
                         </div>
                     </div>

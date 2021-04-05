@@ -50,6 +50,7 @@ Route::middleware('admin')->group(function () {
     Route::get('/admin/trails', [AdminTrailsController::class, 'index'])->name('admin.trails.index');
     Route::get('/admin/trails/create', [AdminTrailsController::class, 'create'])->name('admin.trails.create');
     Route::post('/admin/trails', [AdminTrailsController::class, 'store'])->name('admin.trails.store');
+    Route::get('/admin/trails/{trail}/run', [AdminTrailsController::class, 'run'])->name('admin.trails.run');
     Route::get('/admin/trails/{trail}/edit', [AdminTrailsController::class, 'edit'])->name('admin.trails.edit');
     Route::get('/admin/trails/{trail}/delete', [AdminTrailsController::class, 'delete'])->name('admin.trails.delete');
     Route::get('/admin/trails/{trail}', [AdminTrailsController::class, 'show'])->name('admin.trails.show');

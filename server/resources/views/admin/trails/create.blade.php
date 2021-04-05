@@ -62,6 +62,18 @@
         </div>
 
         <div class="field">
+            <label class="label" for="limit">@lang('admin/trails.create.limit')</label>
+
+            <div class="control">
+                <input class="input @error('limit') is-danger @enderror" type="number" id="limit" name="limit" min="1" max="1000" value="{{ old('limit', 100) }}" />
+            </div>
+
+            @error('limit')
+                <p class="help is-danger">{{ $errors->first('limit') }}</p>
+            @enderror
+        </div>
+
+        <div class="field">
             <div class="control">
                 <button class="button is-link" type="submit">@lang('admin/trails.create.button')</button>
             </div>
