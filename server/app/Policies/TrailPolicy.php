@@ -20,6 +20,11 @@ class TrailPolicy
     }
 
     // You need to be at least a researcher of the hospital of the trail to update the trail information
+    public function run(User $user, Trail $trail)
+    {
+        return $this->update($user, $trail) && !$trail->running;
+    }
+
     public function update(User $user, Trail $trail)
     {
         $hospitalUser = HospitalUser::where('hospital_id', $trail->hospital->id)->where('user_id', $user->id);

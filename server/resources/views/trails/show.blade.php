@@ -29,9 +29,7 @@
         @canany(['run', 'update', 'delete'], $trail)
             <div class="buttons">
                 @can('run', $trail)
-                    @if (!$trail->running)
-                        <a class="button is-success" href="{{ route('trails.run', $trail) }}">@lang('trails.show.run')</a>
-                    @endif
+                    <a class="button is-success" href="{{ route('trails.run', $trail) }}">@lang('trails.show.run')</a>
                 @endcan
 
                 @can('update', $trail)
