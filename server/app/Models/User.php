@@ -6,6 +6,7 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -92,5 +93,19 @@ class User extends Authenticatable
             ->orWhere('address', 'LIKE', '%' . $query . '%')
             ->orWhere('city', 'LIKE', '%' . $query . '%')
             ->orWhere('country', 'LIKE', '%' . $query . '%');
+    }
+
+    // Search collection by a query
+    public static function searchCollection($collection, $query)
+    {
+        return $collection->filter(function ($boat) use ($query) {
+            return Str::contains(strtolower($boat->firstname), strtolower($query)) ||
+                Str::contains(strtolower($boat->insertion), strtolower($query)) ||
+                Str::contains(strtolower($boat->lastname), strtolower($query)) ||
+                Str::contains(strtolower($boat->email), strtolower($query)) ||
+                Str::contains(strtolower($boat->address), strtolower($query)) ||
+                Str::contains(strtolower($boat->city), strtolower($query)) ||
+                Str::contains(strtolower($boat->country), strtolower($query));
+        });
     }
 }

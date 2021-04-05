@@ -164,7 +164,7 @@
 
             @can('create_hospital_user', $hospital)
                 @if ($hospitalUsers->count() != $users->count())
-                    <form method="POST" action="{{ route('hospitals.users.create', $hospital) }}">
+                    <form method="POST" action="{{ route('hospitals.users.store', $hospital) }}">
                         @csrf
 
                         <div class="field has-addons">

@@ -98,7 +98,7 @@
 
         @if (!$trail->running && $trailUsers->count() != $users->count())
             @can('create_trail_user_form', $trail)
-                <form method="POST" action="{{ route('trails.users.create', $trail) }}">
+                <form method="POST" action="{{ route('trails.users.store', $trail) }}">
                     @csrf
 
                     <div class="field has-addons">
@@ -127,7 +127,7 @@
                 </form>
             @else
                 @if (!$trail->users->pluck('id')->contains(Auth::id()))
-                    <form method="POST" action="{{ route('trails.users.create', $trail) }}">
+                    <form method="POST" action="{{ route('trails.users.store', $trail) }}">
                         @csrf
 
                         <input type="hidden" name="user_id" value="{{ Auth::id() }}" />

@@ -149,7 +149,7 @@
         @endif
 
         @if ($hospitalUsers->count() != $users->count())
-            <form method="POST" action="{{ route('admin.hospitals.users.create', $hospital) }}">
+            <form method="POST" action="{{ route('admin.hospitals.users.store', $hospital) }}">
                 @csrf
 
                 <div class="field has-addons">

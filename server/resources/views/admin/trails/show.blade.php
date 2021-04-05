@@ -82,7 +82,7 @@
         @endif
 
         @if (!$trail->running && $trailUsers->count() != $users->count())
-            <form method="POST" action="{{ route('admin.trails.users.create', $trail) }}">
+            <form method="POST" action="{{ route('admin.trails.users.store', $trail) }}">
                 @csrf
 
                 <div class="field has-addons">

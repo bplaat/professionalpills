@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
 
     // Trail user routes
     Route::post('/trails/{trail}/users', [TrailUsersController::class, 'store'])
-        ->name('trails.users.create')->middleware('can:create_trail_user,trail');
+        ->name('trails.users.store')->middleware('can:create_trail_user,trail');
     Route::get('/trails/{trail}/users/{user}/delete', [TrailUsersController::class, 'delete'])
         ->name('trails.users.delete')->middleware('can:delete_trail_user,trail');
 
@@ -91,7 +91,7 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/hospitals/{hospital}', [AdminHospitalsController::class, 'update'])->name('admin.hospitals.update');
 
     // Admin hospital user routes
-    Route::post('/admin/hospitals/{hospital}/users', [AdminHospitalUsersController::class, 'store'])->name('admin.hospitals.users.create');
+    Route::post('/admin/hospitals/{hospital}/users', [AdminHospitalUsersController::class, 'store'])->name('admin.hospitals.users.store');
     Route::post('/admin/hospitals/{hospital}/users/{user}/update', [AdminHospitalUsersController::class, 'update'])->name('admin.hospitals.users.update');
     Route::get('/admin/hospitals/{hospital}/users/{user}/delete', [AdminHospitalUsersController::class, 'delete'])->name('admin.hospitals.users.delete');
 
@@ -106,7 +106,7 @@ Route::middleware('admin')->group(function () {
     Route::post('/admin/trails/{trail}', [AdminTrailsController::class, 'update'])->name('admin.trails.update');
 
     // Admin trail user routes
-    Route::post('/admin/trails/{trail}/users', [AdminTrailUsersController::class, 'store'])->name('admin.trails.users.create');
+    Route::post('/admin/trails/{trail}/users', [AdminTrailUsersController::class, 'store'])->name('admin.trails.users.store');
     Route::get('/admin/trails/{trail}/users/{user}/delete', [AdminTrailUsersController::class, 'delete'])->name('admin.trails.users.delete');
 });
 
