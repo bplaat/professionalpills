@@ -1,0 +1,8 @@
+html,body{background-color:#ddd;background-image:url(/images/paper.jpg)}
+.navbar{background-color:#ccc}
+.navbar-item.has-dropdown.is-active .navbar-link,.navbar-item.has-dropdown:focus .navbar-link,.navbar-item.has-dropdown:hover .navbar-link{background-color:#ddd}
+.navbar-dropdown{background-color:#eee}
+.box{background-color:#eee}
+.input,.select select,.textarea{background-color:#f6f6f6}
+.pagination-link{background-color:#eee}
+.footer{background-color:#ddd}

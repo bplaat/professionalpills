@@ -7,6 +7,7 @@
     <title>@yield('title') - {{ config('app.name') }}</title>
     <link rel="shortcut icon" href="/favicon.ico">
     <link rel="stylesheet" href="/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/style.css">
     @hasSection('head')
         @yield('head')
     @endif
@@ -15,7 +16,7 @@
     @hasSection('navbar')
         @yield('navbar')
     @else
-        <div class="navbar is-light is-fixed-top">
+        <div class="navbar is-fixed-top">
             <div class="container">
                 <div class="navbar-brand">
                     <a class="navbar-item has-text-weight-bold" href="{{ route('home') }}">{{ config('app.name') }}</a>
@@ -44,7 +45,7 @@
                             <div class="navbar-item">
                                 <div class="buttons">
                                     <a class="button is-link" href="{{ route('settings') }}">@lang('layout.header.settings')</a>
-                                    <a class="button" href="{{ route('auth.logout') }}">@lang('layout.header.logout')</a>
+                                    <a class="button is-light" href="{{ route('auth.logout') }}">@lang('layout.header.logout')</a>
                                 </div>
                             </div>
                         </div>
@@ -53,7 +54,7 @@
                             <div class="navbar-item">
                                 <div class="buttons">
                                     <a class="button is-link" href="{{ route('auth.login') }}">@lang('layout.header.login')</a>
-                                    <a class="button" href="{{ route('auth.register') }}">@lang('layout.header.register')</a>
+                                    <a class="button is-gray" href="{{ route('auth.register') }}">@lang('layout.header.register')</a>
                                 </div>
                             </div>
                         </div>
